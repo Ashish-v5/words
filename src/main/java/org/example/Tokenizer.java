@@ -2,7 +2,7 @@ package org.example;
 
 public interface Tokenizer {
     static Tokenizer getNewInstance() {
-        return new MyTokenizer();
+        throw new UnsupportedOperationException();
     }
 
     void load(String text);
