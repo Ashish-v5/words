@@ -30,3 +30,8 @@ instance.getWord(2) // returns "some"
 instance.getWord(0) // returns ""
 ```
 Separating characters: `",", ".", ";", ":", "...", " "`
+
+You can use following methods:
+- `String.split`
+- `String.replace`
+- `String.replaceAll`
