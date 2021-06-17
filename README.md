@@ -1,20 +1,22 @@
 # Tokenizer
 Make a class that implements **Tokenizer** interface. Tokenizer can load a text as string and separate it into words.
- The interface has following methods:
-- getNewInstance - make and return new instance of your class
-- load - load string object as text containing words separated by special characters
-- getWord - get n-th word from the loaded text, n is 0 for first word
-- getWordsCnt - return the number of separated words from the loaded text
+
+The interface has following methods: 
+- `getNewInstance` - make and return new instance of your class
+- `load` - load string object as text containing words separated by special characters
+- `getWord` - get n-th word from the loaded text, n is 0 for first word
+- `getWordsCnt` - return the number of separated words from the loaded text
+
+Create your implementation and make Tokenizer's static default method `getNewInstance` return new instance of your class.
 
 Make sure that:
-- getNewIntance method really makes new instance of your class that doesn't have loaded text yet
-- getWord and getWordsCnt methods throw IllegalStateException if load method hasn't been called yet
-- getWord method throw IllegalArgumentException if n is negative or >= getWordsCnt
-- load method throws IllegalArgumentException for null argument and doesn't throw for empty string
-a sequence of separating characters is treated as single separator (i. e. there are no words between them)
-- empty string is treated as single word
+- `getNewIntance` really makes new instance of your class that doesn't have loaded text yet
+- `getWord` and `getWordsCnt` throw `IllegalStateException` if `load` hasn't been called yet
+- `getWord` throws `IllegalArgumentException` if `n` is negative or >= `getWordsCnt()`
+- `load` throws `IllegalArgumentException` for `null` argument and doesn't throw for empty string (`""`)
+- a sequence of separating characters is treated as single separator (i. e. there are no words between them)
+- empty string is treated as a single word
 - string consisting only of separating characters is treated as containing 0 words
-- 
 - string containing words and starting with separating characters is treated as having empty word at 0-th position
 
 Example:
@@ -27,4 +29,4 @@ instance.getWordsCnt(); // returns 4
 instance.getWord(2) // returns "some"
 instance.getWord(0) // returns ""
 ```
-Separating characters: ",", ".", ";", ":", "...", " "
+Separating characters: `",", ".", ";", ":", "...", " "`
