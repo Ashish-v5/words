@@ -1,37 +1,99 @@
-# Tokenizer
-Make a class that implements **Tokenizer** interface. Tokenizer can load a text as string and separate it into words.
+# Tokenize
+Imlement `StringUtil` class methods
 
-The interface has following methods: 
-- `getNewInstance` - make and return new instance of your class
-- `load` - load string object as text containing words separated by special characters
-- `getWord` - get n-th word from the loaded text, n is 0 for first word
-- `getWordsCnt` - return the number of separated words from the loaded text
+You can use following methods\classes:
+- `String.split`
+- `String.strip`
+- `String.replace`
+- `String.replaceAll`
+- `String.toLowerCase`
+- `String.equalsIgnoreCase`
+- `String.startsWith`
+- `String.matches`
+- `String.join`
+- `StringBuilder`
+- `StringJoiner`
 
-Create your implementation and make Tokenizer's static default method `getNewInstance` return new instance of your class.
+# countEqualIgnoreCase
+```java
+public static int countEqualIgnoreCase(String[] words, String sample) {
+        throw new UnsupportedOperationException();
+    }
+```
+Return the number of words from `words` array that are equal to `sample` with case ignored
 
-Make sure that:
-- `getNewIntance` really makes new instance of your class that doesn't have loaded text yet
-- `getWord` and `getWordsCnt` throw `IllegalStateException` if `load` hasn't been called yet
-- `getWord` throws `IllegalArgumentException` if `n` is negative or >= `getWordsCnt()`
-- `load` throws `IllegalArgumentException` for `null` argument and doesn't throw for empty string (`""`)
-- a sequence of separating characters is treated as single separator (i. e. there are no words between them)
-- empty string is treated as a single word
-- string consisting only of separating characters is treated as containing 0 words
-- string containing words and starting with separating characters is treated as having empty word at 0-th position
+If `sample` is `null` or `words` is `null` or empty return `0`
 
 Example:
 ```java
-String text = " ,. Words, some words. ";
-Tokenizer instance = Tokenizer.getNewInstance();
-instance.getWordsCnt() // throws IllegalStateException
-instance.load(text); // tokenizer processed the text as follows: ["", "Words", "some", "words"]
-instance.getWordsCnt(); // returns 4
-instance.getWord(2) // returns "some"
-instance.getWord(0) // returns ""
+String[] words = new String[] {"nice", "nICE", "nic3"};
+String sample = "NICE";
+int result = StringUtil.countEqualIgnoreCase(words, sample); // 2
 ```
-Separating characters: `",", ".", ";", ":", "...", " "`
 
-You can use following methods:
-- `String.split`
-- `String.replace`
-- `String.replaceAll`
+# splitWords
+```java
+public static String[] splitWords(String text) {
+        throw new UnsupportedOperationException();
+    }
+```
+Split `text` string into array of words using following separating characters: `",", ".", ";", ":", "...", " "`
+
+For empty string, `null` string, and string consisting only of separating characters return `null`
+
+Example:
+```java
+String text = " go with ...the:;        FLOW ";
+String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
+text = ":..,,,::: ;;;      ";
+result = StringUtil.splitWords(text); // null
+```
+
+# convertPath
+```java
+public static String convertPath(String path, boolean toWin) {
+        throw new UnsupportedOperationException();
+    }
+```
+Convert `path` to unix\windows path depending on a boolean parameter
+
+We consider unix path as path in this format: `/folder/folder/file.txt`
+
+And windows path as path in this format: `C:\\folder\\folder\\file.txt`
+
+Let's consider unix `/` root folder to correspond to windows `C:` and vice versa
+
+If `path` doesn't correspond neither to unix path nor to windows path return `null`
+
+If `path` already corresponds to the required format return `path`
+
+`path` parameter examples:
+- `C:\\Program Files`
+- `/dev/null`
+- `file.txt`
+- `folder/logs`
+- `.\\to_do_list.txt`
+
+Example:
+```java
+String winPath = "C:\\Program Files\\my_prog_file.py";
+String unixPath = StringUtil.pathConvert(winPath, false); // "/Program Files/my_prog_file.py"
+unixPath = "../script.sh";
+winPath = StringUtil.pathConvert(unixPath, true); // "..\\script.sh"
+unixPath = StringUtil.pathConvert(unixPath, false); // "../script.sh"
+```
+# joinWords
+```java
+public static String joinWords(String[] words) {
+        throw new UnsupportedOperationException();
+    }
+```
+Join words from `words` array and return as a string in the following format: `"[string, string, ..., string]"`
+
+If `words` is `null` or empty return `null`
+
+Example:
+```java
+String[] words = new String[]{"go", "with", "the", "FLOW"};
+String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
+```
