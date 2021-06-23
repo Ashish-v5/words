@@ -23,6 +23,7 @@ public static int countEqualIgnoreCase(String[] words, String sample) {
 Return the number of words from `words` array that are equal to `sample` with case ignored
 
 If `sample` is `null` or `words` is `null` or empty return `0`
+`words` is guaranteed to not contain `null` values
 
 Example:
 ```java
@@ -61,7 +62,9 @@ We consider unix path as path in this format: `/folder/folder/file.txt`
 
 And windows path as path in this format: `C:\\folder\\folder\\file.txt`
 
-Let's consider unix `/` root folder to correspond to windows `C:` and vice versa
+Let's consider unix `/` root folder to correspond to windows `C:` and vice versa 
+
+Let's consider unix `~` path to correspond to windows `C:\\User` path
 
 If `path` doesn't correspond neither to unix path nor to windows path return `null`
 
@@ -91,9 +94,11 @@ public static String joinWords(String[] words) {
 Join words from `words` array and return as a string in the following format: `"[string, string, ..., string]"`
 
 If `words` is `null` or empty return `null`
+`words` is guaranteed to not contain `null` values
+`words` may contain empty strings, ignore them, i. e. don't put them in the resulting string
 
 Example:
 ```java
-String[] words = new String[]{"go", "with", "the", "FLOW"};
+String[] words = new String[]{"go", "with", "the", "", "FLOW"};
 String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
 ```
