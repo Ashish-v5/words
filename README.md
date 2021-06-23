@@ -13,6 +13,7 @@ You can use following methods\classes:
 - `String.join`
 - `StringBuilder`
 - `StringJoiner`
+- `StringTokenizer`
 
 # countEqualIgnoreCase
 ```java
@@ -23,6 +24,7 @@ public static int countEqualIgnoreCase(String[] words, String sample) {
 Return the number of words from `words` array that are equal to `sample` with case ignored
 
 If `sample` is `null` or `words` is `null` or empty return `0`
+
 `words` is guaranteed to not contain `null` values
 
 Example:
@@ -94,7 +96,9 @@ public static String joinWords(String[] words) {
 Join words from `words` array and return as a string in the following format: `"[string, string, ..., string]"`
 
 If `words` is `null` or empty return `null`
+
 `words` is guaranteed to not contain `null` values
+
 `words` may contain empty strings, ignore them, i. e. don't put them in the resulting string
 
 Example:
