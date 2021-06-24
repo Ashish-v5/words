@@ -11,14 +11,15 @@ You have to change each method's body so that it behaves as it's required
 
 We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behaviour is correct
 
-You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run `mvn clean test`
+You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run `mvn clean test` in the project folder
 
-While imlementing the methods you might need to come up with `regular expressions`. You can use [regex101.com](https://regex101.com/) for working with regular expressions.
+While imlementing the methods you might need to come up with `regular expressions`. You can use [regex101.com](https://regex101.com/) for working with regular expressions
 
 You can and should use following methods\classes (click on the name):
 - [`String.strip`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#strip())
 - [`String.split`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#split(java.lang.String))
 - [`String.replaceAll`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceAll(java.lang.String,java.lang.String))
+- [`String.replaceFirst`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceFirst(java.lang.String,java.lang.String))
 - [`String.toLowerCase`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#toLowerCase())
 - [`String.equalsIgnoreCase`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#equalsIgnoreCase(java.lang.String))
 - [`String.startsWith`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#startsWith(java.lang.String))
@@ -43,6 +44,9 @@ Example:
 String[] words = new String[] {"   nice ", "nICE", "nic3"};
 String sample = "NICE";
 int result = StringUtil.countEqualIgnoreCase(words, sample); // 2
+words = new String[]{" zoOm ", " z oom", " Z O O M "};
+sample = "ZOOM";
+result = StringUtil.countEqualIgnoreCase(words, sample); // 1
 ```
 
 # splitWords
@@ -84,7 +88,7 @@ If `path` already corresponds to the required format return `path`
 - `/dev/null`
 - `file.txt`
 - `folder/logs`
-- `/home//user`
+- `/home//user///some_logs`
 - `.\\to_do_list.txt`
 
 Example:
