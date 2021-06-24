@@ -89,7 +89,7 @@ If `path` already corresponds to the required format return `path`
 - `file.txt`
 - `folder/logs`
 - `/home//user///some_logs`
-- `.\\to_do_list.txt`
+- `.\to_do_list.txt`
 
 Example:
 ```java
