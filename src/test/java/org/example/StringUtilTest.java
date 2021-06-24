@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,57 +32,73 @@ class StringUtilTest {
     @Test
     void testCountReturnsZeroForNullSample() {
         String[] words = new String[]{"word", "   words", "WoRdSS"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = null;
         assertEquals(0, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsZeroForEmptySample() {
         String[] words = new String[]{"word", "   words", "WoRdSS"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "";
         assertEquals(0, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsForSample() {
         String[] words = new String[]{"   nice ", "nICE", "nic3"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "NICE";
         assertEquals(2, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsForSample2() {
         String[] words = new String[]{" game", "  game", "          game     \t "};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "game";
         assertEquals(3, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsForSample3() {
         String[] words = new String[]{"take", "TAKE", "taKE", "ekat", "TakE", "TAKe", "ttt", "taaaake"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "\ttake\t";
         assertEquals(5, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsForSample4() {
         String[] words = new String[]{"empty", "", "\t", "     ", "EMPTY"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "empty";
         assertEquals(2, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsForNumbers() {
         String[] words = new String[]{"  123", "      123", "123\t", "\t\t\t123", "1234", "1230", "321"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "123";
         assertEquals(4, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
     void testCountReturnsForSeparatedParts() {
         String[] words = new String[]{"sch ool", "SCHOO L", "\tschool\t", "     schoo", "s c h o o l"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String sample = "scHooL";
         assertEquals(1, StringUtil.countEqualIgnoreCaseAndSpaces(words, sample));
+        assertArrayEquals(copy, words);
     }
 
     @Test
@@ -267,27 +284,35 @@ class StringUtilTest {
     @Test
     void testJoinReturnNullForArrayOfEmptyStrings() {
         String[] words = new String[]{"", "", ""};
+        String[] copy = Arrays.copyOf(words, words.length);
         assertNull(StringUtil.joinWords(words));
+        assertArrayEquals(copy, words);
     }
 
     @Test
-    void testReturnsForSingleWord() {
+    void testJoinReturnsForSingleWord() {
         String[] words = new String[]{"testing"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String expected = "[testing]";
         assertEquals(expected, StringUtil.joinWords(words));
+        assertArrayEquals(copy, words);
     }
 
     @Test
-    void testReturnsForTwoWords() {
+    void testJoinReturnsForTwoWords() {
         String[] words = new String[]{"first", "second"};
+        String[] copy = Arrays.copyOf(words, words.length);
         String expected = "[first, second]";
         assertEquals(expected, StringUtil.joinWords(words));
+        assertArrayEquals(copy, words);
     }
 
     @ParameterizedTest
     @MethodSource("makeWordsForJoining")
-    void testReturnsForSample(String[] words, String expected) {
+    void testJoinReturnsForSample(String[] words, String expected) {
+        String[] copy = Arrays.copyOf(words, words.length);
         assertEquals(expected, StringUtil.joinWords(words));
+        assertArrayEquals(copy, words);
     }
 
     static Stream<Arguments> makeWordsForJoining() {
