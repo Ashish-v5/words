@@ -8,7 +8,7 @@ Imlement [`StringUtil`](src/main/java/org/example/StringUtil.java) class methods
 All these methods have default implementation that throws `UnsupportedOperationException`.\
 You have to change each method's body so that it behaves as it's required.
 
-We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behaviour is correct.\
+We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behavior is correct.\
 You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run `mvn clean test` in the project folder.
 
 While imlementing the methods you might need to come up with `regular expressions`. You may consider using [regex101.com](https://regex101.com/) to easier design of regular expressions.
@@ -31,11 +31,8 @@ You can and should use following methods\classes (click on the name):
 ```java
 public static int countEqualIgnoreCaseAndSpaces(String[] words, String sample)
 ```
-Return the number of words from `words` array that are equal to `sample` ignoring characters case and leading and trailing spaces
-
-If `sample` is `null` or `words` is `null` or empty, return `0`
-
-`words` is guaranteed to not contain `null` values
+Return the number of words from `words` array that are equal to `sample` ignoring characters case and leading and trailing spaces.\
+If `sample` is `null` or `words` is `null` or empty, return `0`. `words` is guaranteed to not contain `null` values.
 
 Example:
 ```java
@@ -51,8 +48,7 @@ result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
 ```java
 public static String[] splitWords(String text)
 ```
-Split `text` string into array of words using following separating characters: `",", ".", ";", ":", "...", " ", "?", "!"`
-
+Split `text` string into array of words using following separating characters: `",", ".", ";", ":", " ", "?", "!"`.\
 For empty string, `null` string, and string consisting only of separating characters return `null`
 
 Example:
@@ -67,19 +63,16 @@ result = StringUtil.splitWords(text); // null
 ```java
 public static String convertPath(String path, boolean toWin)
 ```
-Convert `path` to unix\windows path depending on a boolean parameter
+Convert `path` to Unix\Windows path depending on a boolean parameter.
 
-We consider unix path as path in this format: `/folder/folder/file.txt`
+We consider Unix path as path in this format: `/folder/folder/file.txt`.\
+And Windows path as path in this format: `C:\folder\folder\file.txt`.\
+Let's consider Unix `/` root folder to correspond to Windows `C:` and vice versa.\
+Let's consider Unix `~` path to correspond to Windows `C:\User` path.
 
-And windows path as path in this format: `C:\folder\folder\file.txt`
-
-Let's consider unix `/` root folder to correspond to windows `C:` and vice versa 
-
-Let's consider unix `~` path to correspond to windows `C:\User` path
-
-If `path` is `null`, empty, or doesn't correspond neither to unix path nor to windows path return `null`
-
-If `path` already corresponds to the required format return `path`
+If `path` is `null`, empty, or doesn't correspond neither to Unix path nor to Windows path return `null`.\
+If `path` already corresponds to the required format return `path`.\
+Illegal path example: `C:\User/root`.
 
 `path` parameter examples:
 - `C:\Program Files`
@@ -103,15 +96,9 @@ winPath = StringUtil.convertPath(unixPath, true); // "C:\\home\\user\\somefile"
 ```java
 public static String joinWords(String[] words)
 ```
-Join words from `words` array and return as a string in the following format: `"[str_1, str_2, ..., str_n]"`
+Join words from `words` array and return as a string in the following format: `"[str_1, str_2, ..., str_n]"`.
 
-If `words` is `null` or empty return `null`
-
-`words` is guaranteed to not contain `null` values
-
-`words` may contain empty strings, ignore them, i. e. don't put them in the resulting string
-
-If `words` contains only empty strings return `null`
+If `words` is `null` or empty return `null`. `words` is guaranteed to not contain `null` values. `words` may contain empty strings, ignore them, i. e. don't put them in the resulting string. If `words` contains only empty strings return `null`.
 
 Example:
 ```java

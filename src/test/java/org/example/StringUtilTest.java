@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StringUtilTest {
 
     static final String[] separators = new String[]{", ", " ", ",", ":", ": ", "; ", ";",
-            ".", ". ", "!", "! ", "...", "... "};
+            ".", ". ", "!", "! "};
 
     @Test
     void testCountReturnsZeroForNullWords() {
@@ -251,6 +251,28 @@ class StringUtilTest {
     void testConvertReturnsForWinToUnix(String unixPath, String winPath) {
         assertEquals(unixPath, StringUtil.convertPath(winPath, false));
         assertEquals(winPath, StringUtil.convertPath(winPath, true));
+    }
+
+    @ParameterizedTest
+    @MethodSource("makeUnixWinPairs")
+    void testConvertReturnsForWinToUnixToWin(String unixPath, String winPath) {
+        String winResult = StringUtil.convertPath(unixPath, true);
+        assertEquals(winPath, winResult);
+        String unixResult = StringUtil.convertPath(winPath, false);
+        assertEquals(unixPath, unixResult);
+        winResult = StringUtil.convertPath(unixResult, true);
+        assertEquals(winPath, winResult);
+    }
+
+    @ParameterizedTest
+    @MethodSource("makeUnixWinPairs")
+    void testConvertReturnsForUnixToWinToUnix(String unixPath, String winPath) {
+        String unixResult = StringUtil.convertPath(winPath, false);
+        assertEquals(unixPath, unixResult);
+        String winResult = StringUtil.convertPath(unixResult, true);
+        assertEquals(winPath, winResult);
+        unixResult = StringUtil.convertPath(winResult, false);
+        assertEquals(unixPath, unixResult);
     }
 
     static Stream<Arguments> makeUnixWinPairs() {
