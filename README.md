@@ -5,15 +5,13 @@ Imlement [`StringUtil`](src/main/java/org/example/StringUtil.java) class methods
 - `convertPath`
 - `joinWords`
 
-All these methods have default implementation that throws `UnsupportedOperationException`
+All these methods have default implementation that throws `UnsupportedOperationException`.\
+You have to change each method's body so that it behaves as it's required.
 
-You have to change each method's body so that it behaves as it's required
+We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behaviour is correct.\
+You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run `mvn clean test` in the project folder.
 
-We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behaviour is correct
-
-You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run `mvn clean test` in the project folder
-
-While imlementing the methods you might need to come up with `regular expressions`. You can use [regex101.com](https://regex101.com/) for working with regular expressions
+While imlementing the methods you might need to come up with `regular expressions`. You may consider using [regex101.com](https://regex101.com/) to easier design of regular expressions.
 
 You can and should use following methods\classes (click on the name):
 - [`String.strip`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#strip())
@@ -35,7 +33,7 @@ public static int countEqualIgnoreCaseAndSpaces(String[] words, String sample)
 ```
 Return the number of words from `words` array that are equal to `sample` ignoring characters case and leading and trailing spaces
 
-If `sample` is `null` or `words` is `null` or empty return `0`
+If `sample` is `null` or `words` is `null` or empty, return `0`
 
 `words` is guaranteed to not contain `null` values
 
