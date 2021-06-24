@@ -1,7 +1,7 @@
 package org.example;
 
 public class StringUtil {
-    public static int countEqualIgnoreCase(String[] words, String sample) {
+    public static int countEqualIgnoreCaseAndSpaces(String[] words, String sample) {
         throw new UnsupportedOperationException();
     }
 
