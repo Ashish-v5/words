@@ -43,10 +43,10 @@ Example:
 ```java
 String[] words = new String[] {"   nice ", "nICE", "nic3"};
 String sample = "NICE";
-int result = StringUtil.countEqualIgnoreCase(words, sample); // 2
+int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
 words = new String[]{" zoOm ", " z oom", " Z O O M "};
 sample = "ZOOM";
-result = StringUtil.countEqualIgnoreCase(words, sample); // 1
+result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
 ```
 
 # splitWords
@@ -73,18 +73,18 @@ Convert `path` to unix\windows path depending on a boolean parameter
 
 We consider unix path as path in this format: `/folder/folder/file.txt`
 
-And windows path as path in this format: `C:\\folder\\folder\\file.txt`
+And windows path as path in this format: `C:\folder\folder\file.txt`
 
 Let's consider unix `/` root folder to correspond to windows `C:` and vice versa 
 
-Let's consider unix `~` path to correspond to windows `C:\\User` path
+Let's consider unix `~` path to correspond to windows `C:\User` path
 
 If `path` is `null`, empty, or doesn't correspond neither to unix path nor to windows path return `null`
 
 If `path` already corresponds to the required format return `path`
 
 `path` parameter examples:
-- `C:\\Program Files`
+- `C:\Program Files`
 - `/dev/null`
 - `file.txt`
 - `folder/logs`
