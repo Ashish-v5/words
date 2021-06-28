@@ -1,4 +1,4 @@
-package org.example;
+package com.epam.rd.autocode;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

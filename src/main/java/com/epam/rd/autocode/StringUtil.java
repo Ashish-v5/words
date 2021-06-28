@@ -1,4 +1,4 @@
-package org.example;
+package com.epam.rd.autocode;
 
 import java.util.Arrays;
 
