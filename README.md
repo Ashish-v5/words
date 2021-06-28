@@ -9,8 +9,11 @@ All these methods have default implementation that throws `UnsupportedOperationE
 You have to change each method's body so that it behaves as it's required.
 
 We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behavior is correct.\
-You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run `mvn clean test` in the project folder.\
-Also, we prepared a few test cases in `StringUtil.main` method. Use this method if you want to test your implementation.
+You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run the following command in the project folder:
+```bash
+mvn clean test
+```
+Also, we prepared a few test cases in  `main` method of [`StringUtil`](src/main/java/org/example/StringUtil.java) class. Use this method if you want to test your implementation.
 
 While imlementing the methods you might need to come up with `regular expressions`. You may consider using [regex101.com](https://regex101.com/) to easier design of regular expressions.
 
