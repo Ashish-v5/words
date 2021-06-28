@@ -41,11 +41,11 @@ If `sample` is `null` or `words` is `null` or empty, return `0`. `words` is guar
 Method usage example:
 ```java
 String[] words = new String[] {"   nice ", "nICE", "nic3"};
-String sample = "NICE";
-int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
-words = new String[]{" zoOm ", " z oom", " Z O O M "};
-sample = "ZOOM";
-result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
+        String sample = "NICE";
+        int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
+        words = new String[]{" zoOm ", " z oom", " Z O O M "};
+        sample = "ZOOM";
+        result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
 ```
 
 # splitWords
@@ -58,9 +58,9 @@ For empty string, `null` string, and string consisting only of separating charac
 Method usage example:
 ```java
 String text = " go with ...the:;        FLOW ";
-String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
-text = ":..,,,::: ;;;      ";
-result = StringUtil.splitWords(text); // null
+        String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
+        text = ":..,,,::: ;;;      ";
+        result = StringUtil.splitWords(text); // null
 ```
 
 # convertPath
@@ -70,6 +70,7 @@ public static String convertPath(String path, boolean toWin)
 Convert `path` to Unix\Windows path depending on a boolean parameter.
 
 Unix path may start with `~` or `/`. Every subdirectory must end with `/` character except the last one.
+`.` and `..` refer to current directory and parent directory.
 Filename doesn't necessarily have the extension.\
 Unix path examples:
 - `/folder/../folder/file.txt`
@@ -79,6 +80,7 @@ Unix path examples:
 - `~/user/some_logs`
 
 Windows path may start with `C:`. Every subdirectory must end with `\ ` character except the last one.
+`.` and `..` refer to current directory and parent directory.
 Filename doesn't necessarily have the extension.\
 Windows path examples:
 - `file.txt`
@@ -88,12 +90,21 @@ Windows path examples:
 - `.\file`
 
 Let's consider Unix `~` path to correspond to Windows `C:\User` path and vice versa.\
-Let's consider Unix `/` root folder (i.e., when the path starts with `/`) to correspond to Windows `C:\ ` drive and vice 
+Let's consider Unix `/` root folder (i.e., when the path starts with `/`) to correspond to Windows `C:\ ` drive and vice
 versa (but `C:\User` still corresponds to `~`).
 
 If `path` already corresponds to the required format (for instance, is Windows path when Windows paths is needed and
 `toWin` boolean parameter is `true`) return `path`.\
 If `path` is `null`, empty, or doesn't correspond to any path format (Unix, Windows), return `null`.\
+It is guaranteed that `path` is either a correct path, or it has some of the following errors:
+- More than one `~`
+- `~` is not at the start
+- `~` mixed with `\ ` (`~` in Windows path)
+- More than one `C:`
+- `C:` is not at the start
+- `C:` mixed with `/` (`C:` in Unix path)
+- `\ ` mixed with `/`
+
 Illegal paths example:
 - `/folder1/folder2\folder3`
 - `C:\User/root`
@@ -125,5 +136,5 @@ If `words` is `null` or empty return `null`. `words` is guaranteed to not contai
 Method usage example:
 ```java
 String[] words = new String[]{"go", "with", "the", "", "FLOW"};
-String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
+        String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
 ```
