@@ -1,5 +1,5 @@
 # Tokenize
-Imlement [`StringUtil`](src/main/java/org/example/StringUtil.java) class methods:
+Imlement [`StringUtil`](src/main/java/com/epam/rd/autocode/StringUtil.java) class methods:
 - `countEqualIgnoreCaseAndSpaces`
 - `splitWords`
 - `convertPath`
@@ -8,12 +8,12 @@ Imlement [`StringUtil`](src/main/java/org/example/StringUtil.java) class methods
 All these methods have default implementation that throws `UnsupportedOperationException`.\
 You have to change each method's body so that it behaves as it's required.
 
-We made JUnit5 tests in [`StringUtilTest`](src/test/java/org/example/StringUtilTest.java) class for making sure each method's behavior is correct.\
+We made JUnit5 tests in [`StringUtilTest`](src/test/java/com/epam/rd/autocode/StringUtilTest.java) class for making sure each method's behavior is correct.\
 You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run the following command in the project folder:
 ```bash
 mvn clean test
 ```
-Also, we prepared a few test cases in  `main` method of [`StringUtil`](src/main/java/org/example/StringUtil.java) class. Use this method if you want to test your implementation.
+Also, we prepared a few test cases in  `main` method of [`StringUtil`](src/main/java/com/epam/rd/autocode/StringUtil.java) class. Use this method if you want to test your implementation.
 
 While imlementing the methods you might need to come up with `regular expressions`. You may consider using [regex101.com](https://regex101.com/) to easier design of regular expressions.
 
@@ -38,7 +38,7 @@ public static int countEqualIgnoreCaseAndSpaces(String[] words, String sample)
 Return the number of words from `words` array that are equal to `sample` ignoring characters case and leading and trailing spaces.\
 If `sample` is `null` or `words` is `null` or empty, return `0`. `words` is guaranteed to not contain `null` values.
 
-Example:
+Method usage example:
 ```java
 String[] words = new String[] {"   nice ", "nICE", "nic3"};
 String sample = "NICE";
@@ -55,7 +55,7 @@ public static String[] splitWords(String text)
 Split `text` string into array of words using following separating characters: `",", ".", ";", ":", " ", "?", "!"`.\
 For empty string, `null` string, and string consisting only of separating characters return `null`
 
-Example:
+Method usage example:
 ```java
 String text = " go with ...the:;        FLOW ";
 String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
@@ -69,24 +69,42 @@ public static String convertPath(String path, boolean toWin)
 ```
 Convert `path` to Unix\Windows path depending on a boolean parameter.
 
-We consider Unix path as path in this format: `/folder/folder/file.txt`.\
-And Windows path as path in this format: `C:\folder\folder\file.txt`.\
-Let's consider Unix `/` root folder to correspond to Windows `C:` and vice versa.\
-Let's consider Unix `~` path to correspond to Windows `C:\User` path.
-
-If `path` is `null`, empty, or doesn't correspond neither to Unix path nor to Windows path return `null`.\
-If `path` already corresponds to the required format return `path`.\
-Illegal path example: `C:\User/root`.
-
-`path` parameter examples:
-- `C:\Program Files`
+Unix path may start with `~` or `/`. Every subdirectory must end with `/` character except the last one.
+Filename doesn't necessarily have the extension.\
+Unix path examples:
+- `/folder/../folder/file.txt`
 - `/dev/null`
 - `file.txt`
-- `folder/logs`
-- `/home//user///some_logs`
-- `.\to_do_list.txt`
+- `folder/logs/`
+- `~/user/some_logs`
 
-Example:
+Windows path may start with `C:`. Every subdirectory must end with `\ ` character except the last one.
+Filename doesn't necessarily have the extension.\
+Windows path examples:
+- `file.txt`
+- `\Program Files\some_file.exe`
+- `.\to_do_list.txt`
+- `C:Users\..\Cygwin\ `
+- `.\file`
+
+Let's consider Unix `~` path to correspond to Windows `C:\User` path and vice versa.\
+Let's consider Unix `/` root folder (i.e., when the path starts with `/`) to correspond to Windows `C:\ ` drive and vice 
+versa (but `C:\User` still corresponds to `~`).
+
+If `path` already corresponds to the required format (for instance, is Windows path when Windows paths is needed and
+`toWin` boolean parameter is `true`) return `path`.\
+If `path` is `null`, empty, or doesn't correspond to any path format (Unix, Windows), return `null`.\
+Illegal paths example:
+- `/folder1/folder2\folder3`
+- `C:\User/root`
+- `/dev/~/`
+- `C:/a/b/c/d`
+- `~\folder`
+- `~/~`
+- `~~`
+- `C:\Folder\Subfolder\C:\ `
+
+Method usage example:
 ```java
 String winPath = "C:\\Program Files\\my_prog_file.py";
 String unixPath = StringUtil.convertPath(winPath, false); // "/Program Files/my_prog_file.py"
@@ -104,7 +122,7 @@ Join words from `words` array and return as a string in the following format: `"
 
 If `words` is `null` or empty return `null`. `words` is guaranteed to not contain `null` values. `words` may contain empty strings, ignore them, i. e. don't put them in the resulting string. If `words` contains only empty strings return `null`.
 
-Example:
+Method usage example:
 ```java
 String[] words = new String[]{"go", "with", "the", "", "FLOW"};
 String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"

@@ -211,7 +211,8 @@ class StringUtilTest {
                 "C:/a/b/c///d",
                 "~\\folder",
                 "~/~",
-                "~~"
+                "~~",
+                "C:\\Folder\\Subfolder\\C:\\",
         };
 
         return Stream.of(paths);
@@ -233,8 +234,8 @@ class StringUtilTest {
     }
 
     @Test
-    void testConvertReturnsForRepeatingSlashes() {
-        String unixPath = "/root//logs///end.log";
+    void testConvertReturnsForSample3() {
+        String unixPath = "/root/logs/end.log";
         String winPath = "C:\\root\\logs\\end.log";
         assertEquals(winPath, StringUtil.convertPath(unixPath, true));
     }
