@@ -41,11 +41,11 @@ If `sample` is `null` or `words` is `null` or empty, return `0`. `words` is guar
 Method usage example:
 ```java
 String[] words = new String[] {"   nice ", "nICE", "nic3"};
-        String sample = "NICE";
-        int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
-        words = new String[]{" zoOm ", " z oom", " Z O O M "};
-        sample = "ZOOM";
-        result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
+String sample = "NICE";
+int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
+words = new String[]{" zoOm ", " z oom", " Z O O M "};
+sample = "ZOOM";
+result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
 ```
 
 # splitWords
@@ -58,9 +58,9 @@ For empty string, `null` string, and string consisting only of separating charac
 Method usage example:
 ```java
 String text = " go with ...the:;        FLOW ";
-        String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
-        text = ":..,,,::: ;;;      ";
-        result = StringUtil.splitWords(text); // null
+String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
+text = ":..,,,::: ;;;      ";
+result = StringUtil.splitWords(text); // null
 ```
 
 # convertPath
@@ -136,5 +136,5 @@ If `words` is `null` or empty return `null`. `words` is guaranteed to not contai
 Method usage example:
 ```java
 String[] words = new String[]{"go", "with", "the", "", "FLOW"};
-        String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
+String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
 ```
