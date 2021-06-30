@@ -1,4 +1,4 @@
-# Tokenize
+# Words
 Imlement [`StringUtil`](src/main/java/com/epam/rd/autocode/StringUtil.java) class methods:
 - `countEqualIgnoreCaseAndSpaces`
 - `splitWords`
