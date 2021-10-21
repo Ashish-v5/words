@@ -1,69 +1,31 @@
 # Words
-Imlement [`StringUtil`](src/main/java/com/epam/rd/autotasks/words/StringUtil.java) class methods:
-- `countEqualIgnoreCaseAndSpaces`
-- `splitWords`
-- `convertPath`
-- `joinWords`
 
-All these methods have default implementation that throws `UnsupportedOperationException`.\
-You have to change each method's body so that it behaves as it's required.
+The purpose of this exercise is to train you to work with strings.
 
-We made JUnit5 tests in [`StringUtilTest`](src/test/java/com/epam/rd/autotasks/words/StringUtilTest.java) class for making sure each method's behavior is correct.\
-You can use these tests yourself, for that you need to install [Maven](https://maven.apache.org/) project manager and run the following command in the project folder:
-```bash
-mvn clean test
-```
-Also, we prepared a few test cases in  `main` method of [`StringUtil`](src/main/java/com/epam/rd/autotasks/words/StringUtil.java) class. Use this method if you want to test your implementation.
+Estimated workload of this exercise is _60 min_.
 
-While imlementing the methods you might need to come up with `regular expressions`. You may consider using [regex101.com](https://regex101.com/) to easier design of regular expressions.
+### Description
 
-You can and should use following methods\classes (click on the name):
-- [`String.strip`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#strip())
-- [`String.split`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#split(java.lang.String))
-- [`String.replaceAll`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceAll(java.lang.String,java.lang.String))
-- [`String.replaceFirst`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceFirst(java.lang.String,java.lang.String))
-- [`String.toLowerCase`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#toLowerCase())
-- [`String.equalsIgnoreCase`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#equalsIgnoreCase(java.lang.String))
-- [`String.startsWith`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#startsWith(java.lang.String))
-- [`String.matches`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#matches(java.lang.String))
-- [`String.join`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...))
-- [`StringBuilder`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/StringBuilder.html)
-- [`StringJoiner`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/StringJoiner.html)
-- [`StringTokenizer`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/StringTokenizer.html)
+Please, implement [`StringUtil`](src/main/java/com/epam/rd/autotasks/words/StringUtil.java) class methods:
 
-# countEqualIgnoreCaseAndSpaces
+#### 1. countEqualIgnoreCaseAndSpaces
+Method signature:
 ```java
 public static int countEqualIgnoreCaseAndSpaces(String[] words, String sample)
 ```
 Return the number of words from `words` array that are equal to `sample` ignoring characters case and leading and trailing spaces.\
 If `sample` is `null` or `words` is `null` or empty, return `0`. `words` is guaranteed to not contain `null` values.
 
-Method usage example:
-```java
-String[] words = new String[] {"   nice ", "nICE", "nic3"};
-String sample = "NICE";
-int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
-words = new String[]{" zoOm ", " z oom", " Z O O M "};
-sample = "ZOOM";
-result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
-```
-
-# splitWords
+#### 2. splitWords
+Method signature:
 ```java
 public static String[] splitWords(String text)
 ```
 Split `text` string into array of words using following separating characters: `",", ".", ";", ":", " ", "?", "!"`.\
 For empty string, `null` string, and string consisting only of separating characters return `null`
 
-Method usage example:
-```java
-String text = " go with ...the:;        FLOW ";
-String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
-text = ":..,,,::: ;;;      ";
-result = StringUtil.splitWords(text); // null
-```
-
-# convertPath
+#### 3. convertPath
+Method signature:
 ```java
 public static String convertPath(String path, boolean toWin)
 ```
@@ -115,7 +77,50 @@ Illegal paths example:
 - `~~`
 - `C:\Folder\Subfolder\C:\ `
 
-Method usage example:
+#### 4.joinWords
+Method signature:
+```java
+public static String joinWords(String[] words)
+```
+Join words from `words` array and return as a string in the following format: `"[str_1, str_2, ..., str_n]"`.
+
+If `words` is `null` or empty return `null`. `words` is guaranteed to not contain `null` values. `words` may contain empty strings, ignore them, i. e. don't put them in the resulting string. If `words` contains only empty strings return `null`.
+
+#### Hints
+- While implementing the methods you might need to come up with `regular expressions`. You may consider using [regex101.com](https://regex101.com/) to easier design of regular expressions.
+- You can and should use following methods\classes (click on the name):
+    - [`String.strip`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#strip())
+    - [`String.split`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#split(java.lang.String))
+    - [`String.replaceAll`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceAll(java.lang.String,java.lang.String))
+    - [`String.replaceFirst`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#replaceFirst(java.lang.String,java.lang.String))
+    - [`String.toLowerCase`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#toLowerCase())
+    - [`String.equalsIgnoreCase`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#equalsIgnoreCase(java.lang.String))
+    - [`String.startsWith`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#startsWith(java.lang.String))
+    - [`String.matches`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#matches(java.lang.String))
+    - [`String.join`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...))
+    - [`StringBuilder`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/StringBuilder.html)
+    - [`StringJoiner`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/StringJoiner.html)
+    - [`StringTokenizer`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/StringTokenizer.html)
+
+### Examples
+You may use `main` method of [`StringUtil`](src/main/java/com/epam/rd/autotasks/words/StringUtil.java)
+class to test your implementation.
+```java
+String[] words = new String[] {"   nice ", "nICE", "nic3"};
+String sample = "NICE";
+int result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 2
+words = new String[]{" zoOm ", " z oom", " Z O O M "};
+sample = "ZOOM";
+result = StringUtil.countEqualIgnoreCaseAndSpaces(words, sample); // 1
+```
+
+```java
+String text = " go with ...the:;        FLOW ";
+String[] result = StringUtil.splitWords(text); // ["go", "with", "the", "FLOW"]
+text = ":..,,,::: ;;;      ";
+result = StringUtil.splitWords(text); // null
+```
+
 ```java
 String winPath = "C:\\Program Files\\my_prog_file.py";
 String unixPath = StringUtil.convertPath(winPath, false); // "/Program Files/my_prog_file.py"
@@ -125,15 +130,7 @@ unixPath = StringUtil.convertPath(unixPath, false); // "../script.sh"
 unixPath = "//home/user/somefile";
 winPath = StringUtil.convertPath(unixPath, true); // "C:\\home\\user\\somefile"
 ```
-# joinWords
-```java
-public static String joinWords(String[] words)
-```
-Join words from `words` array and return as a string in the following format: `"[str_1, str_2, ..., str_n]"`.
 
-If `words` is `null` or empty return `null`. `words` is guaranteed to not contain `null` values. `words` may contain empty strings, ignore them, i. e. don't put them in the resulting string. If `words` contains only empty strings return `null`.
-
-Method usage example:
 ```java
 String[] words = new String[]{"go", "with", "the", "", "FLOW"};
 String result = StringUtil.joinWords(words); // "[go, with, the, FLOW]"
