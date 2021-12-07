@@ -42,13 +42,13 @@ Unix path examples:
 - `~/user/some_logs`
 
 Windows path may start with `C:`. Every subdirectory must end with `\ ` character except the last one.
-`.` and `..` refer to current directory and parent directory.
+Path elements `.` and `..` refer to current directory and parent directory.
 Filename doesn't necessarily have the extension.\
 Windows path examples:
 - `file.txt`
 - `\Program Files\some_file.exe`
 - `.\to_do_list.txt`
-- `C:Users\..\Cygwin\ `
+- `C:\Users\..\Cygwin`
 - `.\file`
 
 Let's consider Unix `~` path to correspond to Windows `C:\User` path and vice versa.\
