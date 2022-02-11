@@ -32,7 +32,7 @@ public static String convertPath(String path, boolean toWin)
 Convert `path` to Unix\Windows path depending on a boolean parameter.
 
 Unix path may start with `~` or `/`. Every subdirectory must end with `/` character except the last one.
-`.` and `..` refer to current directory and parent directory.
+Path elements `.` and `..` refer to current directory and parent directory.
 Filename doesn't necessarily have the extension.\
 Unix path examples:
 - `/folder/../folder/file.txt`
